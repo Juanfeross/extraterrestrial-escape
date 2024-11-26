@@ -1,0 +1,57 @@
+---
+const menuItems = [
+  { label: "Inicio", href: "#" },
+  { label: "Servicios", href: "#servicios" },
+  { label: "Proyectos", href: "#proyectos" },
+  { label: "Tecnologías", href: "#tecnologias" },
+  { label: "Contacto", href: "#contacto" },
+];
+---
+
+<nav
+  class="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-gray-800"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center">
+        <a href="#" class="flex items-center space-x-2">
+          <div
+            class="w-8 h-8 bg-white rounded-lg flex items-center justify-center"
+          >
+            <div class="w-4 h-4 bg-black rounded-sm"></div>
+          </div>
+          <span class="text-white font-semibold text-xl">DevFreelance</span>
+        </a>
+      </div>
+
+      <div class="hidden md:block">
+        <div class="flex items-center space-x-8">
+          {
+            menuItems.map((item) => (
+              <a
+                href={item.href}
+                class="text-gray-300 hover:text-white transition-colors"
+              >
+                {item.label}
+              </a>
+            ))
+          }
+          <div class="flex items-center space-x-4">
+            <a
+              href="#"
+              class="text-gray-300 hover:text-white transition-colors"
+            >
+              Portafolio
+            </a>
+            <a
+              href="#"
+              class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              Contrátanos
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
