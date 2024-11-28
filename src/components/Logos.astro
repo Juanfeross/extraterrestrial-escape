@@ -1,5 +1,13 @@
 ---
 import { TECHNOLOGIES } from "./../const/technologies";
+import Carousel from "./Carousel.astro";
+
+import '../css/carousel.css'
+
+const carousel = [...TECHNOLOGIES, ...TECHNOLOGIES];
+
+console.log(TECHNOLOGIES.length);
+
 ---
 
 <section class="py-16 bg-black border-t border-gray-800">
@@ -10,21 +18,13 @@ import { TECHNOLOGIES } from "./../const/technologies";
     <p class="text-center text-gray-500 mb-8">
       Con vasta experiencia y mucho amor
     </p>
-    <div class="flex flex-wrap justify-center items-center gap-8">
-      {
-        TECHNOLOGIES.map((tech) => (
-          <div class="text-blue-500 text-xl font-semibold bg-gray-900 px-4 py-2 rounded-lg">
-            {tech.name}
-          </div>
-        ))
-      }
-    </div>
-    <div class="flex flex-wrap justify-center items-center gap-8">
-      {
-        TECHNOLOGIES.map((tech) => (
-          <img class="w-24" src={tech.image} alt={tech.name} />
-        ))
-      }
+    <div class="overflow-hidden w-full">
+      <div class="flex whitespace-nowrap animate-scroll">
+         {carousel.map(tech => (
+          <Carousel name={tech.name} image={tech.image}/>
+         ))}
+      </div>      
     </div>
   </div>
 </section>
+
