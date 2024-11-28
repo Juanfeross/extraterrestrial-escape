@@ -25,6 +25,13 @@ console.log(TECHNOLOGIES.length);
           ))
         }
       </div>
+      <div class="flex flex-wrap">
+        {
+          TECHNOLOGIES.map((logo) => (
+            <img class="w-24" src={logo.image} alt="" />
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>
