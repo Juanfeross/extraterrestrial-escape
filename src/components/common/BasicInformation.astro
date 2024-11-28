@@ -1,0 +1,32 @@
+---
+import { BASICINFO } from "../../const/basicInfo";
+---
+
+<section class="columns-3 min-w-full text-white p-6">
+  {
+    BASICINFO.map((info) => (
+      <div class="justify-center flex flex-col items-center min-h-[50px] bg-gray-800 rounded-lg shadow-lg p-6 space-y-4">
+        <img
+          class="w-32 h-32 rounded-full"
+          src="https://i.pinimg.com/736x/d8/e3/04/d8e3040372030c633df7f7ee5034dfef.jpg"
+          alt="Juan Fernando"
+        />
+        <h2 class="font-semibold text-2xl">{info.name}</h2>
+
+        <div class="space-y-1 flex flex-col justify-center items-center">
+          <span class="block font-semibold">Correo:</span>
+          <a
+            href="mailto:${info.email}?Subject=Estoy%20en%20interesado"
+            class="text-blue-500"
+          >
+            {info.email}
+          </a>
+          <span class="block font-semibold">Celular:</span>
+          <a href="https://wa.me/${info.phoneNumber}" class="text-blue-500">
+            {info.phoneNumber}
+          </a>
+        </div>
+      </div>
+    ))
+  }
+</section>
