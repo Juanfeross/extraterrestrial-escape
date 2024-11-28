@@ -1,0 +1,83 @@
+---
+const currentYear = new Date().getFullYear();
+
+const legalLinks = [
+  { label: "Términos y Condiciones", href: "/terminos" },
+  { label: "Política de Privacidad", href: "/privacidad" },
+  { label: "Cookies", href: "/cookies" },
+];
+
+const socialLinks = [
+  { label: "Facebook", href: "#", icon: "facebook" },
+  { label: "Twitter", href: "#", icon: "twitter" },
+  { label: "LinkedIn", href: "#", icon: "linkedin" },
+  { label: "GitHub", href: "#", icon: "github" },
+];
+---
+
+<footer class="bg-gray-900 border-t border-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* Aviso Legal */}
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-4">Aviso Legal</h3>
+        <ul class="space-y-2">
+          {
+            legalLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-gray-400 hover:text-white transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      {/* Contacto */}
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-4">Contacto</h3>
+        <ul class="space-y-2 text-gray-400">
+          <li>Email: contacto@devfreelance.com</li>
+          <li>Teléfono: +34 123 456 789</li>
+          <li>Dirección: Calle Desarrollo 123, 28001 Madrid, España</li>
+        </ul>
+      </div>
+
+      {/* Redes Sociales */}
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-4">Redes Sociales</h3>
+        <div class="flex space-x-4">
+          {
+            socialLinks.map((link) => (
+              <a
+                href={link.href}
+                class="text-gray-400 hover:text-white transition-colors"
+                aria-label={`Visita nuestro perfil de ${link.label}`}
+              >
+                <span class="sr-only">{link.label}</span>
+                <svg
+                  class="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm0 18c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8zm4-8c0 2.21-1.79 4-4 4s-4-1.79-4-4 1.79-4 4-4 4 1.79 4 4z" />
+                </svg>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 pt-8 border-t border-gray-800 text-center">
+      <p class="text-gray-400">
+        &copy; {currentYear} DevFreelance. Todos los derechos reservados.
+      </p>
+    </div>
+  </div>
+</footer>

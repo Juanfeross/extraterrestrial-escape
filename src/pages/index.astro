@@ -1,10 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.astro";
-import DashboardPreview from "../components/DashboardPreview.astro";
-import Logos from "../components/Logos.astro";
-import Features from "../components/Features.astro";
-import FAQ from "../components/FAQ.astro";
+import Hero from "../components/homepage/Hero.astro";
+import DashboardPreview from "../components/homepage/DashboardPreview.astro";
+import Logos from "../components/homepage/Logos.astro";
+import Features from "../components/homepage/Features.astro";
+import FAQ from "../components/homepage/FAQ.astro";
+import Contact from "../components/contact/Contact.astro";
+import BasicInformation from "../components/common/BasicInformation.astro";
 ---
 
 <Layout title="Metploy - HR Management Platform">
@@ -14,5 +16,7 @@ import FAQ from "../components/FAQ.astro";
     <Logos />
     <Features />
     <FAQ />
+    <BasicInformation />
+    <Contact />
   </main>
 </Layout>
