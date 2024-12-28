@@ -1,36 +1,42 @@
 ---
 import Button from "../common/Button.astro";
+import Href from "../common/Href.astro";
 ---
 
-<section class="pt-32 pb-20 bg-black text-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h1 class="text-5xl font-bold leading-tight mb-6">
-      Desarrollo web de alta calidad<br />para tu próximo proyecto
+<section
+  class="relative h-screen flex items-center justify-center overflow-hidden"
+>
+  <video
+    class="absolute top-0 left-0 w-full h-full object-cover"
+    src="https://res.cloudinary.com/dfyuwmril/video/upload/v1735351869/samples/dance-2.mp4"
+    autoplay
+    loop
+    muted
+    playsinline></video>
+
+  <div class="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h1
+      class="text-5xl md:text-6xl font-bold leading-tight mb-6 text-white drop-shadow-lg"
+    >
+      Desarrollo web de alta calidad<br class="hidden sm:inline" />para tu
+      próximo proyecto
     </h1>
-    <p class="text-gray-400 max-w-2xl mx-auto mb-8">
+    <p class="text-xl text-gray-200 max-w-2xl mx-auto mb-10 drop-shadow">
       Ofrecemos soluciones de desarrollo web personalizadas, eficientes y
       escalables para llevar tu visión al siguiente nivel
     </p>
-    <div class="flex items-center justify-center space-x-4">
+    <div
+      class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6"
+    >
       <Button text="Contáctanos" href="#contacto" variant="primary" />
-      <a
-        href="#proyectos"
-        class="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
-      >
-        <svg
-          class="w-8 h-8 border-2 border-current rounded-full p-1"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-        </svg>
-        <span>Ver Proyectos</span>
-      </a>
+      <Href text="Ver Proyectos" href="#proyectos" />
     </div>
+  </div>
+
+  <div
+    class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent"
+  >
   </div>
 </section>

@@ -5,19 +5,24 @@ interface Props {
 }
 
 const { name, image } = Astro.props;
-
-console.log(name);
 ---
 
-<div class="h-full w-[400px] m-2 flex-shrink-0 cursor-pointer">
-  <div
-    class="overflow-hidden mb-4 flex flex-wrap justify-center items-center h-[250px]"
-  >
-    <img class="w-[200px] h-[200px]" src={image} alt="" />
-  </div>
-  <div class="flex flex-wrap justify-center items-center gap-8">
-    <div class="text-blue-500 text-xl font-semibold px-4 py-2 rounded-lg">
-      {name}
+<div class="flex-shrink-0 w-[250px] h-[250px] m-4 perspective-1000">
+  <div class="w-full h-full transition-transform duration-500">
+    <div
+      class="absolute w-full h-full bg-gray-800 rounded-xl flex items-center justify-center"
+    >
+      <img
+        class="w-[150px] h-[150px] object-contain"
+        src={image}
+        alt={`Logo de ${name}`}
+      />
     </div>
   </div>
 </div>
+
+<style>
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+</style>

@@ -1,39 +1,49 @@
 ---
-import Button from "../common/Button.astro";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 ---
 
-<form action="" class="space-y-2">
+<form action="" class="space-y-4">
   <div>
-    <label for="name" class="block font-semibold mb-1">Nombre:</label>
-    <input
-      type="text"
-      id="name"
-      name="name"
-      placeholder="Escribe tu nombre"
-      class="w-full p-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
+    <label for="name" class="block text-sm font-medium text-gray-300 mb-1"
+      >Nombre</label
+    >
+    <Input type="text" id="name" name="name" placeholder="Tu nombre" required />
   </div>
   <div>
-    <label for="email" class="block font-semibold mb-1"
-      >Correo electrónico:</label
+    <label for="email" class="block text-sm font-medium text-gray-300 mb-1"
+      >Correo electrónico</label
     >
-    <input
+    <Input
       type="email"
       id="email"
       name="email"
-      placeholder="pepitoperez@gmail.com"
-      class="w-full p-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      placeholder="tu@email.com"
+      required
     />
   </div>
   <div>
-    <label for="message" class="block font-semibold mb-1">Asunto:</label>
-    <textarea
-      name="message"
+    <label for="message" class="block text-sm font-medium text-gray-300 mb-1"
+      >Mensaje</label
+    >
+    <Textarea
       id="message"
-      rows="4"
+      name="message"
       placeholder="Escribe tu mensaje aquí"
-      class="w-full p-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-    ></textarea>
+      rows="4"
+      required
+    />
   </div>
-  <Button type="submit" text="Enviar Mensaje" variant="primary" />
+  <Button type="submit" variant="default">Enviar Mensaje</Button>
 </form>
+
+<script>
+  const form = document.querySelector("form");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    // Aquí iría la lógica para enviar el formulario
+    alert("Gracias por tu mensaje. Te contactaremos pronto.");
+    form.reset();
+  });
+</script>

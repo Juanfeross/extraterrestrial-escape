@@ -1,32 +1,59 @@
 ---
 import { BASICINFO } from "../../const/basicInfo";
+import { Icon } from "astro-icon/components";
 ---
 
-<section class="columns-3 min-w-full text-white p-6">
-  {
-    BASICINFO.map((info) => (
-      <div class="justify-center flex flex-col items-center min-h-[50px] bg-gray-800 rounded-lg shadow-lg p-6 space-y-4">
-        <img
-          class="w-32 h-32 rounded-full"
-          src="https://i.pinimg.com/736x/d8/e3/04/d8e3040372030c633df7f7ee5034dfef.jpg"
-          alt="Juan Fernando"
-        />
-        <h2 class="font-semibold text-2xl">{info.name}</h2>
-
-        <div class="space-y-1 flex flex-col justify-center items-center">
-          <span class="block font-semibold">Correo:</span>
-          <a
-            href="mailto:${info.email}?Subject=Estoy%20en%20interesado"
-            class="text-blue-500"
-          >
-            {info.email}
-          </a>
-          <span class="block font-semibold">Celular:</span>
-          <a href="https://wa.me/${info.phoneNumber}" class="text-blue-500">
-            {info.phoneNumber}
-          </a>
-        </div>
-      </div>
-    ))
-  }
+<section class="py-20 bg-gradient-to-b from-gray-900 to-black">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-4xl font-bold text-white text-center mb-4">
+      Nuestro Equipo
+    </h2>
+    <p class="text-xl text-blue-300 text-center mb-12">
+      Expertos dedicados a hacer realidad tu visión
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        BASICINFO.map((info) => (
+          <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-blue-500/20 hover:scale-105">
+            <div class="relative h-64">
+              <img
+                class="w-full h-full object-cover"
+                src={info.image}
+                alt={info.name}
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent" />
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-semibold text-white mb-2">
+                {info.name}
+              </h3>
+              <p class="text-blue-400 mb-4">{info.role}</p>
+              <div class="space-y-3">
+                <a
+                  href={`mailto:${info.email}`}
+                  class="flex items-center text-gray-300 hover:text-blue-400 transition-colors"
+                >
+                  <Icon name="mdi:email" class="w-5 h-5 mr-2" />
+                  {info.email}
+                </a>
+                <a
+                  href={`https://wa.me/${info.phoneNumber}`}
+                  class="flex items-center text-gray-300 hover:text-blue-400 transition-colors"
+                >
+                  <Icon name="mdi:whatsapp" class="w-5 h-5 mr-2" />
+                  {info.phoneNumber}
+                </a>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
 </section>
+
+<style>
+  .hover\:scale-105:hover {
+    transform: scale(1.05);
+  }
+</style>
