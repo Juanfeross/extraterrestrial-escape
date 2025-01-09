@@ -1,0 +1,113 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+import TechnologiesGrid from "../components/common/TechnologiesGrid";
+import "@/styles/globals.css";
+
+const services = [
+  {
+    title: "Desarrollo Web",
+    description:
+      "Creamos sitios web responsivos y aplicaciones web modernas utilizando las últimas tecnologías y mejores prácticas.",
+    icon: "mdi:code",
+    details: [
+      "Sitios web estáticos y dinámicos",
+      "Aplicaciones web de una sola página (SPA)",
+      "Integración de APIs y servicios de terceros",
+      "Optimización de rendimiento y SEO",
+    ],
+  },
+  {
+    title: "Desarrollo Móvil",
+    description:
+      "Desarrollamos aplicaciones móviles nativas y multiplataforma para iOS y Android que destacan en el mercado.",
+    icon: "mdi:smartphone",
+    details: [
+      "Aplicaciones nativas para iOS y Android",
+      "Aplicaciones híbridas con React Native",
+      "Diseño de interfaces de usuario móviles",
+      "Integración con servicios en la nube",
+    ],
+  },
+  {
+    title: "Diseño UX/UI",
+    description:
+      "Diseñamos interfaces intuitivas y atractivas que mejoran la experiencia del usuario y aumentan la conversión.",
+    icon: "mdi:palette",
+    details: [
+      "Diseño de interfaces de usuario",
+      "Prototipado y wireframing",
+      "Pruebas de usabilidad",
+      "Diseño responsivo y adaptativo",
+    ],
+  },
+  {
+    title: "Desarrollo Backend",
+    description:
+      "Construimos APIs robustas y escalables que potencian sus aplicaciones web y móviles.",
+    icon: "mdi:server",
+    details: [
+      "Desarrollo de APIs RESTful",
+      "Integración de bases de datos",
+      "Autenticación y autorización",
+      "Optimización de rendimiento y escalabilidad",
+    ],
+  },
+  {
+    title: "Consultoría Tecnológica",
+    description:
+      "Ofrecemos asesoramiento experto para ayudarle a tomar decisiones informadas sobre tecnología y desarrollo.",
+    icon: "mdi:lightbulb",
+    details: [
+      "Evaluación de arquitectura de software",
+      "Selección de stack tecnológico",
+      "Planificación de proyectos",
+      "Auditorías de código y rendimiento",
+    ],
+  },
+];
+---
+
+<Layout title="Nuestros Servicios - DevFreelance">
+  <main
+    class="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white py-16 px-4 sm:px-6 lg:px-8"
+  >
+    <div class="max-w-7xl mx-auto">
+      <h1 class="text-4xl font-bold text-center mb-12">Nuestros Servicios</h1>
+
+      <section class="mb-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {
+            services.map((service) => (
+              <div class="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden">
+                <div class="p-6">
+                  <div class="flex items-center space-x-4 mb-4">
+                    <Icon name={service.icon} class="w-8 h-8 text-blue-500" />
+                    <h3 class="text-xl font-semibold">{service.title}</h3>
+                  </div>
+                  <p class="text-gray-400 mb-4">{service.description}</p>
+                  <ul class="list-disc list-inside text-sm text-gray-300 space-y-1">
+                    {service.details.map((detail) => (
+                      <li>{detail}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-center mb-8">
+          Nuestras Tecnologías
+        </h2>
+        <p class="text-center text-gray-300 mb-8">
+          Utilizamos las últimas tecnologías para ofrecer soluciones modernas y
+          eficientes. Haz clic en cada tecnología para saber más.
+        </p>
+        <TechnologiesGrid client:load />
+      </section>
+    </div>
+  </main>
+</Layout>

@@ -1,6 +1,5 @@
 ---
-import Button from "../common/Button.astro";
-import Href from "../common/Href.astro";
+
 ---
 
 <section
@@ -13,28 +12,27 @@ import Href from "../common/Href.astro";
     loop
     muted
     playsinline></video>
-
-  <div class="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
-
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+  <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50">
+  </div>
+  <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8">
     <h1
-      class="text-5xl md:text-6xl font-bold leading-tight mb-6 text-white drop-shadow-lg"
+      class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg"
     >
       Desarrollo web de alta calidad<br class="hidden sm:inline" />para tu
       próximo proyecto
     </h1>
-    <p class="text-xl text-gray-200 max-w-2xl mx-auto mb-10 drop-shadow">
-      Ofrecemos soluciones de desarrollo web personalizadas, eficientes y
-      escalables para llevar tu visión al siguiente nivel
-    </p>
-    <div
-      class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6"
+    <p
+      class="text-xl sm:text-2xl md:text-3xl text-gray-200 mb-8 drop-shadow-md"
     >
-      <Button text="Contáctanos" href="#contacto" variant="primary" />
-      <Href text="Ver Proyectos" href="#proyectos" />
-    </div>
+      Transformando ideas en realidad digital
+    </p>
+    <a
+      href="#contact"
+      class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105 inline-block"
+    >
+      Comienza tu proyecto
+    </a>
   </div>
-
   <div
     class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent"
   >

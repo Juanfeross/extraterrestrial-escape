@@ -1,60 +1,64 @@
 ---
-import { Icon } from "astro-icon/components";
-
 const faqs = [
   {
-    question: "¿Qué tipo de proyectos pueden desarrollar?",
+    question: "¿Qué servicios ofrecen?",
     answer:
-      "Podemos desarrollar una amplia gama de proyectos web, desde sitios corporativos hasta aplicaciones web complejas y e-commerce.",
+      "Ofrecemos una amplia gama de servicios que incluyen desarrollo web, diseño UX/UI, desarrollo de aplicaciones móviles y consultoría IT.",
   },
   {
-    question: "¿Cuál es su proceso de trabajo?",
+    question: "¿Cuánto tiempo toma completar un proyecto?",
     answer:
-      "Nuestro proceso incluye una fase de planificación, diseño, desarrollo, pruebas y lanzamiento. Mantenemos una comunicación constante con el cliente en cada etapa.",
+      "El tiempo de desarrollo varía según la complejidad del proyecto. Típicamente, un sitio web puede tomar de 4 a 12 semanas, mientras que una aplicación móvil puede llevar de 8 a 16 semanas.",
   },
   {
     question: "¿Ofrecen mantenimiento después del lanzamiento?",
     answer:
-      "Sí, ofrecemos servicios de mantenimiento y soporte continuo para asegurar que tu proyecto siga funcionando de manera óptima.",
+      "Sí, ofrecemos planes de mantenimiento y soporte continuo para asegurar que tu proyecto siga funcionando sin problemas después del lanzamiento.",
+  },
+  {
+    question: "¿Cómo puedo solicitar una cotización?",
+    answer:
+      "Puedes solicitar una cotización llenando el formulario de contacto en nuestra página web o llamándonos directamente. Nos pondremos en contacto contigo para discutir los detalles de tu proyecto.",
   },
 ];
 ---
 
 <section class="py-20 bg-gradient-to-b from-black to-gray-900">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-4xl font-bold text-white text-center mb-4">
+    <h2 class="text-4xl font-bold text-center text-white mb-12">
       Preguntas Frecuentes
     </h2>
-    <p class="text-xl text-blue-300 text-center mb-12">
-      Resolvemos tus dudas para que puedas tomar la mejor decisión
-    </p>
     <div class="space-y-6">
       {
         faqs.map((faq, index) => (
-          <div class="faq-item bg-gray-800 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20">
+          <div class="bg-gray-800 rounded-xl overflow-hidden">
             <button
-              class="w-full text-left p-6 focus:outline-none focus:bg-gray-700 transition-colors duration-300"
+              class="flex justify-between items-center w-full p-4 text-left text-white hover:bg-gray-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
               id={`faq-button-${index}`}
               aria-expanded="false"
               aria-controls={`faq-answer-${index}`}
             >
-              <div class="flex items-center justify-between">
-                <h3 class="text-lg font-semibold text-white pr-8">
-                  {faq.question}
-                </h3>
-                <Icon
-                  name="mdi:chevron-down"
-                  class="w-6 h-6 text-blue-400 transform transition-transform duration-300"
+              <span class="text-lg font-medium">{faq.question}</span>
+              <svg
+                class="w-6 h-6 transform transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
                 />
-              </div>
+              </svg>
             </button>
             <div
+              class="hidden bg-gray-700 p-4 text-gray-300"
               id={`faq-answer-${index}`}
-              class="faq-answer hidden px-6 pb-6"
-              role="region"
-              aria-labelledby={`faq-button-${index}`}
             >
-              <p class="text-gray-300">{faq.answer}</p>
+              <p>{faq.answer}</p>
             </div>
           </div>
         ))
@@ -64,44 +68,15 @@ const faqs = [
 </section>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const faqItems = document.querySelectorAll(".faq-item");
+  document.querySelectorAll('[id^="faq-button-"]').forEach((button) => {
+    button.addEventListener("click", () => {
+      const answerId = button.id.replace("button", "answer");
+      const answerElement = document.getElementById(answerId);
+      const isExpanded = button.getAttribute("aria-expanded") === "true";
 
-    faqItems.forEach((item) => {
-      const button = item.querySelector("button");
-      const answer = item.querySelector(".faq-answer");
-      const icon = item.querySelector("svg");
-
-      button.addEventListener("click", () => {
-        const expanded =
-          button.getAttribute("aria-expanded") === "true" || false;
-
-        button.setAttribute("aria-expanded", !expanded);
-        answer.classList.toggle("hidden");
-        icon.classList.toggle("rotate-180");
-
-        if (!expanded) {
-          answer.style.maxHeight = answer.scrollHeight + "px";
-        } else {
-          answer.style.maxHeight = null;
-        }
-
-        button.blur();
-      });
+      button.setAttribute("aria-expanded", !isExpanded);
+      answerElement.classList.toggle("hidden");
+      button.querySelector("svg").classList.toggle("rotate-180");
     });
   });
 </script>
-
-<style>
-  .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-  }
-
-  /* Nuevo estilo para manejar el foco */
-  .faq-item button:focus-visible {
-    outline: 2px solid #3b82f6; /* Un azul que coincide con el tema */
-    outline-offset: -2px;
-  }
-</style>

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Menu, X } from 'lucide-react'
 
 const menuItems = [
-    { label: "Servicios", href: "#servicios" },
+    { label: "Servicios", href: "Services" },
     { label: "Proyectos", href: "#proyectos" },
     { label: "Tecnologías", href: "#tecnologias" },
     { label: "Contacto", href: "#contacto" },
@@ -25,8 +25,8 @@ export default function Header() {
 
     return (
         <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                ? 'bg-gray-900/95 backdrop-blur-md shadow-lg border-b border-gray-800'
-                : 'bg-gray-900/70 backdrop-blur-sm'
+            ? 'bg-gray-900/95 backdrop-blur-md shadow-lg border-b border-gray-800'
+            : 'bg-gray-900/70 backdrop-blur-sm'
             }`} style={{ transitionProperty: 'background-color, backdrop-filter, box-shadow, border-color' }}>
             <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
@@ -50,7 +50,7 @@ export default function Header() {
                                     {item.label}
                                 </a>
                             ))}
-                            <Button asChild>
+                            <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white">
                                 <a href="/contratar">Contrátanos</a>
                             </Button>
                         </div>
@@ -83,7 +83,7 @@ export default function Header() {
                         </a>
                     ))}
                     <div className="mt-4 px-3">
-                        <Button asChild className="w-full">
+                        <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white w-full">
                             <a href="/contratar">Contrátanos</a>
                         </Button>
                     </div>
