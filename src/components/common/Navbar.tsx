@@ -6,9 +6,9 @@ import { Menu, X } from 'lucide-react'
 
 const menuItems = [
     { label: "Servicios", href: "Services" },
-    { label: "Proyectos", href: "#proyectos" },
-    { label: "Tecnologías", href: "#tecnologias" },
-    { label: "Contacto", href: "#contacto" },
+    { label: "Proyectos", href: "Projects" },
+    { label: "Equipo", href: "Team" },
+    { label: "Blog", href: "Blog" },
 ];
 
 export default function Header() {
@@ -51,7 +51,7 @@ export default function Header() {
                                 </a>
                             ))}
                             <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white">
-                                <a href="/contratar">Contrátanos</a>
+                                <a href="Hire">Contrátanos</a>
                             </Button>
                         </div>
                     </div>
@@ -84,7 +84,7 @@ export default function Header() {
                     ))}
                     <div className="mt-4 px-3">
                         <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white w-full">
-                            <a href="/contratar">Contrátanos</a>
+                            <a href="Hire">Contrátanos</a>
                         </Button>
                     </div>
                 </div>

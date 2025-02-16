@@ -1,8 +1,173 @@
 ---
-import Contact from "../components/contact/Contact.astro";
 import Layout from "../layouts/Layout.astro";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Icon } from "astro-icon/components";
+import "@/styles/globals.css";
+
+const contactInfo = [
+  { icon: "mdi:email", info: "info@devfreelance.com", label: "Email" },
+  { icon: "mdi:phone", info: "+34 123 456 789", label: "Teléfono" },
+  {
+    icon: "mdi:map-marker",
+    info: "Calle Desarrollo 123, 28001 Madrid, España",
+    label: "Dirección",
+  },
+];
+
+const socialMedia = [
+  {
+    icon: "mdi:facebook",
+    url: "https://facebook.com/devfreelance",
+    label: "Facebook",
+  },
+  {
+    icon: "mdi:twitter",
+    url: "https://twitter.com/devfreelance",
+    label: "Twitter",
+  },
+  {
+    icon: "mdi:linkedin",
+    url: "https://linkedin.com/company/devfreelance",
+    label: "LinkedIn",
+  },
+  {
+    icon: "mdi:github",
+    url: "https://github.com/devfreelance",
+    label: "GitHub",
+  },
+];
 ---
 
-<Layout title="Contrato">
-  <Contact />
+<Layout title="Contrátanos - DevFreelance">
+  <main
+    class="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white py-16 px-4 sm:px-6 lg:px-8"
+  >
+    <div class="max-w-7xl mx-auto">
+      <h1 class="text-4xl font-bold text-center mb-4">Contrátanos</h1>
+      <p class="text-xl text-center text-gray-300 mb-12">
+        Estamos listos para hacer realidad tu próximo proyecto. Contáctanos y
+        comencemos a trabajar juntos.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- Formulario de contacto -->
+        <div class="bg-gray-800 rounded-lg p-8 shadow-lg">
+          <h2 class="text-2xl font-semibold mb-6">Envíanos un mensaje</h2>
+          <form class="space-y-6">
+            <div>
+              <label
+                for="name"
+                class="block text-sm font-medium text-gray-300 mb-1"
+                >Nombre</label
+              >
+              <Input type="text" id="name" name="name" required />
+            </div>
+            <div>
+              <label
+                for="email"
+                class="block text-sm font-medium text-gray-300 mb-1"
+                >Email</label
+              >
+              <Input type="email" id="email" name="email" required />
+            </div>
+            <div>
+              <label
+                for="project"
+                class="block text-sm font-medium text-gray-300 mb-1"
+                >Tipo de Proyecto</label
+              >
+              <select
+                id="project"
+                name="project"
+                class="w-full rounded-md bg-gray-700 border-gray-600 text-white focus:border-blue-500 focus:ring-blue-500"
+              >
+                <option value="">Selecciona una opción</option>
+                <option value="web">Desarrollo Web</option>
+                <option value="mobile">Desarrollo Móvil</option>
+                <option value="design">Diseño UX/UI</option>
+                <option value="consulting">Consultoría</option>
+                <option value="other">Otro</option>
+              </select>
+            </div>
+            <div>
+              <label
+                for="message"
+                class="block text-sm font-medium text-gray-300 mb-1"
+                >Mensaje</label
+              >
+              <Textarea id="message" name="message" rows="4" required />
+            </div>
+            <Button type="submit" class="w-full">Enviar Mensaje</Button>
+          </form>
+        </div>
+
+        <!-- Información de contacto y redes sociales -->
+        <div class="space-y-8">
+          <div class="bg-gray-800 rounded-lg p-8 shadow-lg">
+            <h2 class="text-2xl font-semibold mb-6">Información de Contacto</h2>
+            <ul class="space-y-4">
+              {
+                contactInfo.map((item) => (
+                  <li class="flex items-start">
+                    <Icon
+                      name={item.icon}
+                      class="w-6 h-6 text-blue-400 mr-3 mt-1"
+                    />
+                    <div>
+                      <p class="font-medium">{item.label}</p>
+                      <p class="text-gray-300">{item.info}</p>
+                    </div>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <div class="bg-gray-800 rounded-lg p-8 shadow-lg">
+            <h2 class="text-2xl font-semibold mb-6">
+              Síguenos en Redes Sociales
+            </h2>
+            <div class="flex space-x-4">
+              {
+                socialMedia.map((item) => (
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-gray-300 hover:text-blue-400 transition-colors"
+                  >
+                    <Icon name={item.icon} class="w-8 h-8" />
+                    <span class="sr-only">{item.label}</span>
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+
+          <div class="bg-gray-800 rounded-lg p-8 shadow-lg">
+            <h2 class="text-2xl font-semibold mb-4">¿Por qué elegirnos?</h2>
+            <ul class="list-disc list-inside text-gray-300 space-y-2">
+              <li>Equipo de desarrolladores altamente calificados</li>
+              <li>Enfoque personalizado en cada proyecto</li>
+              <li>Comunicación clara y constante</li>
+              <li>Uso de las últimas tecnologías y mejores prácticas</li>
+              <li>Compromiso con la calidad y los plazos de entrega</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 </Layout>
+
+<script>
+  const form = document.querySelector("form");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    // Aquí iría la lógica para manejar el envío del formulario
+    alert("Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.");
+    form.reset();
+  });
+</script>

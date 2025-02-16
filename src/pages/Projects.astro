@@ -1,0 +1,120 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { Button } from "@/components/ui/button";
+import ProjectModal from "../components/common/ProjectModal";
+import "@/styles/globals.css";
+
+const projects = [
+  {
+    id: 1,
+    title: "E-commerce de Moda Sostenible",
+    description:
+      "Plataforma de comercio electrónico para una marca de moda sostenible, con enfoque en la experiencia de usuario y el rendimiento.",
+    image: "/placeholder.svg",
+    technologies: ["Next.js", "Tailwind CSS", "Stripe", "Sanity CMS"],
+    link: "https://ejemplo-ecommerce.com",
+  },
+  {
+    id: 2,
+    title: "App de Gestión de Tareas",
+    description:
+      "Aplicación móvil para la gestión de tareas y productividad personal, con sincronización en la nube y notificaciones.",
+    image: "/placeholder.svg",
+    technologies: ["React Native", "Firebase", "Redux"],
+    link: "https://ejemplo-taskapp.com",
+  },
+  {
+    id: 3,
+    title: "Dashboard para IoT",
+    description:
+      "Panel de control para monitorear y controlar dispositivos IoT en tiempo real, con visualizaciones de datos avanzadas.",
+    image: "/placeholder.svg",
+    technologies: ["Vue.js", "D3.js", "Node.js", "MongoDB"],
+    link: "https://ejemplo-iotdashboard.com",
+  },
+  {
+    id: 4,
+    title: "Plataforma de Aprendizaje en Línea",
+    description:
+      "Sistema de gestión de aprendizaje con cursos interactivos, evaluaciones en tiempo real y seguimiento del progreso del estudiante.",
+    image: "/placeholder.svg",
+    technologies: ["Angular", "Express.js", "PostgreSQL", "WebSockets"],
+    link: "https://ejemplo-elearning.com",
+  },
+  {
+    id: 5,
+    title: "Aplicación de Reservas para Restaurantes",
+    description:
+      "Sistema de reservas en línea para restaurantes con gestión de mesas, menús digitales y análisis de datos para propietarios.",
+    image: "/placeholder.svg",
+    technologies: ["React", "Node.js", "GraphQL", "MongoDB"],
+    link: "https://ejemplo-reservas.com",
+  },
+  {
+    id: 6,
+    title: "Portal de Noticias Personalizadas",
+    description:
+      "Plataforma de noticias que utiliza IA para personalizar el contenido según los intereses y hábitos de lectura del usuario.",
+    image: "/placeholder.svg",
+    technologies: ["Astro", "Svelte", "Python (FastAPI)", "TensorFlow"],
+    link: "https://ejemplo-newsfeed.com",
+  },
+];
+---
+
+<Layout title="Nuestros Proyectos - DevFreelance">
+  <main
+    class="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white py-16 px-4 sm:px-6 lg:px-8"
+  >
+    <div class="max-w-7xl mx-auto">
+      <h1 class="text-4xl font-bold text-center mb-4">Nuestro Portafolio</h1>
+      <p class="text-xl text-center text-gray-300 mb-12">
+        Descubre algunos de los proyectos innovadores que hemos desarrollado
+        para nuestros clientes.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          projects.map((project) => (
+            <div
+              key={project.id}
+              class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-blue-500/20 hover:scale-105"
+            >
+              <Image
+                src={project.image || "/placeholder.svg"}
+                alt={project.title}
+                width={600}
+                height={400}
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">{project.title}</h3>
+                <p class="text-gray-300 mb-4">{project.description}</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  {project.technologies.map((tech) => (
+                    <span class="bg-blue-600 text-white text-xs px-2 py-1 rounded-full">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <div class="flex justify-between items-center">
+                  <Button variant="outline" size="sm" asChild>
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Ver Proyecto
+                    </a>
+                  </Button>
+                  <ProjectModal client:load project={project} />
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </main>
+</Layout>

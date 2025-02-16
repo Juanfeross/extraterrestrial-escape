@@ -1,0 +1,130 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import { Button } from "@/components/ui/button";
+import TeamMemberModal from "../components/common/TeamMemberModal";
+import "@/styles/globals.css";
+
+const teamMembers = [
+  {
+    id: 1,
+    name: "Ana Rodríguez",
+    role: "Desarrolladora Full Stack",
+    image: "/placeholder-ana.svg",
+    bio: "Ana es una apasionada desarrolladora full stack con experiencia en React, Node.js y bases de datos SQL y NoSQL. Le encanta resolver problemas complejos y crear interfaces de usuario intuitivas.",
+    skills: ["JavaScript", "React", "Node.js", "MongoDB", "GraphQL"],
+    projects: ["E-commerce de Moda Sostenible", "Dashboard para IoT"],
+    socialMedia: {
+      linkedin: "https://www.linkedin.com/in/ana-rodriguez",
+      github: "https://github.com/ana-rodriguez",
+      twitter: "https://twitter.com/ana_rodriguez_dev",
+    },
+  },
+  {
+    id: 2,
+    name: "Carlos Méndez",
+    role: "Diseñador UX/UI",
+    image: "/placeholder-carlos.svg",
+    bio: "Carlos es un diseñador UX/UI creativo con un ojo agudo para los detalles. Se especializa en crear experiencias de usuario atractivas y funcionales que impulsan la participación del usuario.",
+    skills: ["Figma", "Adobe XD", "Sketch", "Prototyping", "User Research"],
+    projects: [
+      "App de Gestión de Tareas",
+      "Plataforma de Aprendizaje en Línea",
+    ],
+    socialMedia: {
+      linkedin: "https://www.linkedin.com/in/carlos-mendez",
+      behance: "https://www.behance.net/carlos-mendez",
+      dribbble: "https://dribbble.com/carlos-mendez",
+    },
+  },
+  {
+    id: 3,
+    name: "Laura Sánchez",
+    role: "Desarrolladora Mobile",
+    image: "/placeholder-laura.svg",
+    bio: "Laura es una desarrolladora mobile experimentada, especializada en crear aplicaciones nativas para iOS y Android. Tiene pasión por la optimización del rendimiento y la creación de interfaces de usuario fluidas.",
+    skills: ["Swift", "Kotlin", "React Native", "Flutter", "Firebase"],
+    projects: [
+      "App de Gestión de Tareas",
+      "Aplicación de Reservas para Restaurantes",
+    ],
+    socialMedia: {
+      linkedin: "https://www.linkedin.com/in/laura-sanchez",
+      github: "https://github.com/laura-sanchez",
+      medium: "https://medium.com/@laura-sanchez",
+    },
+  },
+];
+---
+
+<Layout title="Conoce a Nuestro Equipo - DevFreelance">
+  <main
+    class="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white py-16 px-4 sm:px-6 lg:px-8"
+  >
+    <div class="max-w-7xl mx-auto">
+      <h1 class="text-4xl font-bold text-center mb-4">
+        Conoce a Nuestro Equipo
+      </h1>
+      <p class="text-xl text-center text-gray-300 mb-12">
+        Somos un grupo de profesionales apasionados por la tecnología y
+        comprometidos con la excelencia.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          teamMembers.map((member) => (
+            <div
+              key={member.id}
+              class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-blue-500/20 hover:scale-105"
+            >
+              <Image
+                src={member.image || "/placeholder.svg"}
+                alt={member.name}
+                width={400}
+                height={400}
+                class="w-full h-64 object-cover"
+              />
+              <div class="p-6">
+                <h2 class="text-2xl font-semibold mb-2">{member.name}</h2>
+                <p class="text-blue-400 mb-4">{member.role}</p>
+                <p class="text-gray-300 mb-4 line-clamp-3">{member.bio}</p>
+                <div class="flex justify-between items-center">
+                  <div class="flex space-x-2">
+                    {Object.entries(member.socialMedia).map(
+                      ([platform, url]) => (
+                        <a
+                          href={url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="text-gray-400 hover:text-blue-400 transition-colors"
+                        >
+                          <Icon name={`mdi:${platform}`} class="w-6 h-6" />
+                          <span class="sr-only">{platform}</span>
+                        </a>
+                      )
+                    )}
+                  </div>
+                  <TeamMemberModal client:load member={member} />
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-16 text-center">
+        <h2 class="text-3xl font-bold mb-4">
+          ¿Quieres unirte a nuestro equipo?
+        </h2>
+        <p class="text-xl text-gray-300 mb-8">
+          Siempre estamos buscando talentos apasionados para unirse a nuestra
+          misión.
+        </p>
+        <Button asChild size="lg" class="bg-blue-600 hover:bg-blue-700">
+          <a href="/carreras">Ver Oportunidades de Carrera</a>
+        </Button>
+      </div>
+    </div>
+  </main>
+</Layout>

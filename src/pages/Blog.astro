@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import { Button } from '@/components/ui/button';
+import "@/styles/globals.css";
+
+const blogPosts = [
+  {
+    id: 1,
+    title: "5 Tendencias de Desarrollo Web para 2025",
+    excerpt: "Descubre las tecnologías y prácticas que definirán el desarrollo web en los próximos años.",
+    image: "/placeholder-blog1.svg",
+    date: "2024-03-15",
+    author: "Ana Rodríguez",
+    category: "Desarrollo Web"
+  },
+  {
+    id: 2,
+    title: "Cómo Optimizar el Rendimiento de tu Aplicación React",
+    excerpt: "Aprende técnicas avanzadas para mejorar la velocidad y eficiencia de tus aplicaciones React.",
+    image: "/placeholder-blog2.svg",
+    date: "2024-03-10",
+    author: "Carlos Méndez",
+    category: "React"
+  },
+  {
+    id: 3,
+    title: "Diseño UX: Creando Experiencias Memorables",
+    excerpt: "Explora los principios clave para diseñar interfaces que cautiven y retengan a los usuarios.",
+    image: "/placeholder-blog3.svg",
+    date: "2024-03-05",
+    author: "Laura Sánchez",
+    category: "Diseño UX/UI"
+  },
+  // Agrega más posts según sea necesario
+];
+---
+
+<Layout title="Blog - DevFreelance">
+  <main class="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <h1 class="text-4xl font-bold text-center mb-4">Nuestro Blog</h1>
+      <p class="text-xl text-center text-gray-300 mb-12">
+        Explora nuestros últimos artículos sobre desarrollo, diseño y tecnología.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {blogPosts.map((post) => (
+          <article key={post.id} class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-blue-500/20 hover:scale-105">
+            <Image
+              src={post.image || "/placeholder.svg"}
+              alt={post.title}
+              width={400}
+              height={225}
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex justify-between items-center text-sm text-gray-400 mb-2">
+                <span>{post.category}</span>
+                <time datetime={post.date}>{new Date(post.date).toLocaleDateString()}</time>
+              </div>
+              <h2 class="text-xl font-semibold mb-2">{post.title}</h2>
+              <p class="text-gray-300 mb-4">{post.excerpt}</p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-blue-400">{post.author}</span>
+                <Button variant="outline" size="sm" asChild>
+                  <a href={`/blog/${post.id}`}>Leer más</a>
+                </Button>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="mt-12 text-center">
+        <Button asChild size="lg" class="bg-blue-600 hover:bg-blue-700">
+          <a href="/blog/archive">Ver todos los artículos</a>
+        </Button>
+      </div>
+    </div>
+  </main>
+</Layout>
+
